@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Post_List{% endblock %}
+
+{% block content %}
+    {% if posts %}
+        {% for post in posts %}
+            <h2><a href="{{ post.get_absolute_url }}">{{ post.Title }}</a> </h2>
+            <p class="date">Published {{ post.publish }} by {{ post.created_by }}</p>
+            <var>{{ post.Body|truncatewords:30|linebreaks }}</var>
+        {% endfor %}
+    {% else %}
+        <p>Post are not yet published. Wait</p>
+    {% endif %}
+    {% include "pagination.html" with page=page_obj %}
+{% endblock %}

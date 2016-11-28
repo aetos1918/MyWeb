@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from blog.views import home_page
 
@@ -23,3 +24,5 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls', namespace='blog', app_name='blog')),
     url(r'^$', home_page, name='homepage'),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
